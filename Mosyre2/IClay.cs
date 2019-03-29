@@ -8,8 +8,6 @@ namespace Mosyre2
 	{
 		Dictionary<object, object> Agreement { get; }
 
-		List<Contact> Contacts { get; }
-
 		void OnSignal(IClay fromClay, object atConnectPoint, object signal);
 
 		void Connect(IClay withClay, object atConnectPoint);

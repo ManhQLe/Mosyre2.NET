@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Mosyre2
 {
-	public abstract class Clay : IClay
+	public abstract class Clay
 	{
-		public Dictionary<object, object> Agreement { get => throw new NotImplementedException();}
-		public List<Contact> Contacts { get => throw new NotImplementedException();}
+		public Clay(Agreement theAgreement) {
+			if (theAgreement == null)
+				theAgreement = new Agreement();
+			Agreement = theAgreement;
+		}
 
+		public Agreement Agreement { get; }
+		
+		
 		public abstract void Connect(IClay withClay, object atConnectPoint);
 
 
