@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Mosyre2
 {
 
-	public abstract class TClay : Clay
+	public abstract class TClay: Clay
 	{
 		Dictionary<Enum, object> _mem;
 
@@ -30,7 +30,4 @@ namespace Mosyre2
 		}
 
 	}
-
-	
-
 }
