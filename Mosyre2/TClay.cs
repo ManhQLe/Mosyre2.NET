@@ -9,14 +9,14 @@ namespace Mosyre2
 
 	public abstract class TClay: Clay
 	{
-		Dictionary<Enum, object> _mem;
+		Dictionary<object, object> _mem;
 
 		public TClay(Agreement agr) : base(agr)
 		{
 		}
 
 		//Nomenclayture
-		protected virtual void Remember(object thisThing, Enum asSymbol) {
+		protected virtual void Remember(object thisThing, object asSymbol) {
 			_mem[asSymbol] = thisThing;
 		}
 

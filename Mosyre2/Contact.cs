@@ -13,7 +13,7 @@ namespace Mosyre2
 			ConnectPoint = connectPoint;
 		}
 
-		public IClay Clay { get; }
-		public object ConnectPoint { get; }
+		public IClay Clay { get; internal set; }
+		public object ConnectPoint { get; internal set; }
 	}
 }
