@@ -69,7 +69,8 @@ namespace Mosyre2
 
 		public override void Disconnect(IClay withClay, object atConnectPoint)
 		{
-			_contacts.Remove(atConnectPoint);
+			if (_contacts.ContainsKey(atConnectPoint) && _contacts[atConnectPoint] == withClay)
+				_contacts.Remove(atConnectPoint);
 		}
 
 		public override void OnSignal(IClay fromClay, object atConnectPoint, object signal)

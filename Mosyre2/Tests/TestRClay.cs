@@ -39,7 +39,7 @@ namespace Mosyre2.Tests
 
 			Debug.Assert(clay1._contacts["P1"] == clay3, "Did not make connection with clay3");
 
-			Debug.Assert(clay1._contacts.Count == 3, "Missing connection, clay1 is supposed to have clay2 and clay3 ");
+			Debug.Assert(clay1._contacts.Count == 3, "Missing connections, supposed to have 3 connections");
 
 			
 
