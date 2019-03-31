@@ -69,7 +69,8 @@ namespace Mosyre2
 				{
 					if (c.ConnectPoint != atConnectPoint || c.Clay != fromClay)
 					{
-						if ((Agreement as CAgreement).ParallelTrx) {
+						if ((Agreement as CAgreement).ParallelTrx)
+						{
 							Task.Run(() => Clay.Vibrate(c.Clay, c.ConnectPoint, signal, this));
 						}
 						else
@@ -77,6 +78,17 @@ namespace Mosyre2
 					}
 				}
 		}
-		
+
+		public void LinkWith(params LinkDef[] def) {
+			foreach (var d in def) {
+				Clay.Connect(this, d.Clay, d.ConnectPoint, d.ConnectPoint);
+			}
+		}
+
+		public static Conduit CreateLink(params LinkDef[] def) {
+			var c = new Conduit();
+			c.LinkWith(def);
+			return c;
+		}
 	}
 }
