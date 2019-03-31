@@ -45,6 +45,11 @@ namespace Mosyre2
 		private List<object> _collected = new List<object>();
 		int _one = 0;
 		RCore _core;
+
+		public RClay():this(new RAgreement()) {
+
+		}
+
 		public RClay(RAgreement agr) : base(agr)
 		{
 			_core = new RCore { myClay = this };
