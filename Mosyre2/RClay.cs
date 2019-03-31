@@ -1,14 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 namespace Mosyre2
 {
 	public class RCore {
+		internal RClay myClay;
+
+		internal RCore() {
+		}
+
+		public object this[object cp] {
+			get {
+				return myClay.Recall(cp);
+			}
+			set {
+				var p = myClay._contacts.Find(x => x.ConnectPoint == cp);
+				if (p != null) {
+					Clay.Vibrate(p.Clay, cp, value, myClay);
+				}
+			}
+		}
 	}
 
-	public delegate void RClayFx(RCore center, IClay clay, object cp);
+	public delegate void RClayFx(RCore center, RClay clay, object cp);
 
 	public class RAgreement : Agreement
 	{
@@ -21,17 +36,19 @@ namespace Mosyre2
 		public RClayFx Response { get; set; }
 		public bool IsStaged  {get;set;}
 
-		static void _noResponse(RCore center, IClay clay, object cp) {
+		static void _noResponse(RCore center, RClay clay, object cp) {
 		}
 	}
 
-	public class RClay<T>: TClay where T: RAgreement
+	public class RClay: TClay
 	{
-		private List<Contact> _contacts = new List<Contact>();
+		internal List<Contact> _contacts = new List<Contact>();
 		private List<object> _collected = new List<object>();
-		public RClay(T agr) : base(agr)
+		int _one = 0;
+		RCore _core;
+		public RClay(RAgreement agr) : base(agr)
 		{
-
+			_core = new RCore { myClay = this };
 		}
 
 		protected List<object> SensorPoints
@@ -66,6 +83,7 @@ namespace Mosyre2
 				if (IsAllSignalsReady()) {
 					if ((Agreement as RAgreement).IsStaged)
 						_collected.Clear();
+
 					OnResponse(atConnectPoint);
 				}
 
@@ -73,7 +91,7 @@ namespace Mosyre2
 		}
 
 		protected virtual void OnResponse(object cp) {
-			(Agreement as RAgreement).Response(null, this as IClay, cp);
+			(Agreement as RAgreement).Response(_core, this, cp);
 		}
 
 		protected virtual void OnInit() {

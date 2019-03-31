@@ -6,7 +6,6 @@ namespace Mosyre2
 {
 	public interface IClay
 	{
-		Dictionary<object, object> Agreement { get; }
 
 		void OnSignal(IClay fromClay, object atConnectPoint, object signal);
 

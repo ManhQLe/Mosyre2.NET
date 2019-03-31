@@ -16,16 +16,16 @@ namespace Mosyre2
 		}
 
 		//Nomenclayture
-		protected virtual void Remember(object thisThing, object asSymbol) {
+		internal protected virtual void Remember(object thisThing, object asSymbol) {
 			_mem[asSymbol] = thisThing;
 		}
 
-		protected virtual object Recall(Enum symbol)
+		internal protected virtual object Recall(object symbol)
 		{
 			return _mem.ContainsKey(symbol) ? _mem[symbol] : null;
 		}
 
-		protected virtual void Forget(Enum symbol) {
+		internal protected virtual void Forget(object symbol) {
 			_mem.Remove(symbol);
 		}
 
