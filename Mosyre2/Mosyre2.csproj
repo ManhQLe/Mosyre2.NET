@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Agreement.cs" />
     <Compile Include="Clay.cs" />
+    <Compile Include="Conduit.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="IClay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

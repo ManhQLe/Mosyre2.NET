@@ -14,10 +14,9 @@ namespace Mosyre2
 			get {
 				return myClay.Recall(cp);
 			}
-			set {
-				var p = myClay._contacts.Find(x => x.ConnectPoint == cp);
-				if (p != null) {
-					Clay.Vibrate(p.Clay, cp, value, myClay);
+			set {				
+				if (myClay._contacts.ContainsKey(cp)) {
+					Clay.Vibrate(myClay._contacts[cp], cp, value, myClay);
 				}
 			}
 		}
@@ -42,7 +41,7 @@ namespace Mosyre2
 
 	public class RClay: TClay
 	{
-		internal List<Contact> _contacts = new List<Contact>();
+		internal Dictionary<object,IClay> _contacts = new Dictionary<object,IClay>();
 		private List<object> _collected = new List<object>();
 		int _one = 0;
 		RCore _core;
@@ -56,29 +55,26 @@ namespace Mosyre2
 			get {
 				return (Agreement as RAgreement).SensorPoints;
 			}
-		}		
+		}
 
 		public override void Connect(IClay withClay, object atConnectPoint)
 		{
-			var pair = _contacts.Find(x => x.ConnectPoint == atConnectPoint);
-			if (pair == null)
-				_contacts.Add(new Contact(withClay, atConnectPoint));
-			else
-				pair.Clay = withClay;
+			_contacts[atConnectPoint] = withClay;
 		}
 
 		public override void Disconnect(IClay withClay, object atConnectPoint)
 		{
-			var idx = _contacts.FindIndex(x => x.ConnectPoint == atConnectPoint && x.Clay == withClay);
-			if (idx >= 0)
-				_contacts.RemoveAt(idx);
+			_contacts.Remove(atConnectPoint);
 		}
 
 		public override void OnSignal(IClay fromClay, object atConnectPoint, object signal)
 		{
-			var idx = _contacts.FindIndex(x => x.ConnectPoint == atConnectPoint && x.Clay == fromClay);
-			if (idx >= 0 && IsValidSensorPoint(atConnectPoint)) {
-				var contact = _contacts[idx];
+			if (++_one == 1)
+				OnInit();
+
+			if (_contacts.ContainsKey(atConnectPoint) && 
+				_contacts[atConnectPoint] == fromClay && IsValidSensorPoint(atConnectPoint)) {
+			
 				SetSignal(atConnectPoint, signal);
 				if (IsAllSignalsReady()) {
 					if ((Agreement as RAgreement).IsStaged)
@@ -86,7 +82,6 @@ namespace Mosyre2
 
 					OnResponse(atConnectPoint);
 				}
-
 			}
 		}
 
