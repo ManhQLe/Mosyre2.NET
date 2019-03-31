@@ -8,12 +8,12 @@ namespace Mosyre2
 {
 	public class Contact
 	{
-		public Contact(IClay clay, object connectPoint) {
+		public Contact(Clay clay, object connectPoint) {
 			Clay = clay;
 			ConnectPoint = connectPoint;
 		}
 
-		public IClay Clay { get; internal set; }
+		public Clay Clay { get; internal set; }
 		public object ConnectPoint { get; internal set; }
 	}
 }

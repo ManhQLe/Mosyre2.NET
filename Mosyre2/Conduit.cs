@@ -44,7 +44,7 @@ namespace Mosyre2
 			
 		}
 
-		public override void Connect(IClay withClay, object atConnectPoint)
+		public override void Connect(Clay withClay, object atConnectPoint)
 		{
 			if (withClay is Conduit)
 			{
@@ -56,12 +56,12 @@ namespace Mosyre2
 			_contacts.Add(new Contact(withClay, atConnectPoint));
 		}
 
-		public override void Disconnect(IClay withClay, object atConnectPoint)
+		public override void Disconnect(Clay withClay, object atConnectPoint)
 		{
 			_contacts.Remove(new Contact(withClay, atConnectPoint));
 		}
 
-		public override void OnSignal(IClay fromClay, object atConnectPoint, object signal)
+		public override void OnSignal(Clay fromClay, object atConnectPoint, object signal)
 		{
 			var valid = _contacts.Contains(new Contact(fromClay, atConnectPoint));
 			if (valid)

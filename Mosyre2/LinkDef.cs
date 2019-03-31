@@ -8,9 +8,9 @@ namespace Mosyre2
 {
 	public class LinkDef
 	{	
-		public IClay Clay { get; set; }
+		public Clay Clay { get; set; }
 		public object ConnectPoint { get; set; }
-		public LinkDef(IClay clay, object cp) {
+		public LinkDef(Clay clay, object cp) {
 			Clay = clay;
 			ConnectPoint = cp;
 		}

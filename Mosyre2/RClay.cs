@@ -41,7 +41,7 @@ namespace Mosyre2
 
 	public class RClay: TClay
 	{
-		internal Dictionary<object,IClay> _contacts = new Dictionary<object,IClay>();
+		internal Dictionary<object,Clay> _contacts = new Dictionary<object,Clay>();
 		private List<object> _collected = new List<object>();
 		int _one = 0;
 		RCore _core;
@@ -62,18 +62,18 @@ namespace Mosyre2
 			}
 		}
 
-		public override void Connect(IClay withClay, object atConnectPoint)
+		public override void Connect(Clay withClay, object atConnectPoint)
 		{
 			_contacts[atConnectPoint] = withClay;
 		}
 
-		public override void Disconnect(IClay withClay, object atConnectPoint)
+		public override void Disconnect(Clay withClay, object atConnectPoint)
 		{
 			if (_contacts.ContainsKey(atConnectPoint) && _contacts[atConnectPoint] == withClay)
 				_contacts.Remove(atConnectPoint);
 		}
 
-		public override void OnSignal(IClay fromClay, object atConnectPoint, object signal)
+		public override void OnSignal(Clay fromClay, object atConnectPoint, object signal)
 		{
 			if (++_one == 1)
 				OnInit();
