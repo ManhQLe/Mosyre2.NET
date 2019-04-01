@@ -73,7 +73,7 @@ namespace Mosyre2
 				_contacts.Remove(atConnectPoint);
 		}
 
-		public override void OnSignal(Clay fromClay, object atConnectPoint, object signal)
+		protected override void OnSignal(Clay fromClay, object atConnectPoint, object signal)
 		{
 			if (++_one == 1)
 				OnInit();

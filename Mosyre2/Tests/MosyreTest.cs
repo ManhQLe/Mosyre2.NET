@@ -8,7 +8,7 @@ namespace Mosyre2.Tests
 {
 	public abstract class MosyreTest
 	{
-		public abstract void Run(string[] args);
+		protected abstract void Run(string[] args);
 
 		public void Start(string[] args) {
 			var bk = Console.ForegroundColor;
@@ -28,6 +28,11 @@ namespace Mosyre2.Tests
 				Console.WriteLine(ex);
 				Console.ForegroundColor = bk;
 			}
+		}
+
+		protected void Assert(bool x, string message) {
+			if (!x)
+				throw new Exception(message);
 		}
 	}
 }

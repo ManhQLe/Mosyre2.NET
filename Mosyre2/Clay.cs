@@ -22,7 +22,7 @@ namespace Mosyre2
 		public abstract void Disconnect(Clay withClay, object atConnectPoint);
 
 
-		internal protected abstract void OnSignal(Clay fromClay, object atConnectPoint, object signal);
+		protected abstract void OnSignal(Clay fromClay, object atConnectPoint, object signal);
 
 		internal static void Vibrate(Clay clay, object atConnectPoint, object signal, Clay srcClay) {
 			clay.OnSignal(srcClay, atConnectPoint, signal);

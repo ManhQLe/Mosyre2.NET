@@ -9,7 +9,7 @@ namespace Mosyre2
 
 	public abstract class TClay: Clay
 	{
-		Dictionary<object, object> _mem;
+		Dictionary<object, object> _mem = new Dictionary<object, object>();
 
 		public TClay(Agreement agr) : base(agr)
 		{

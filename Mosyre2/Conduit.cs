@@ -61,7 +61,7 @@ namespace Mosyre2
 			_contacts.Remove(new Contact(withClay, atConnectPoint));
 		}
 
-		public override void OnSignal(Clay fromClay, object atConnectPoint, object signal)
+		protected override void OnSignal(Clay fromClay, object atConnectPoint, object signal)
 		{
 			var valid = _contacts.Contains(new Contact(fromClay, atConnectPoint));
 			if (valid)
