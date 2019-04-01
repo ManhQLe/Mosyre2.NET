@@ -41,15 +41,13 @@ namespace Mosyre2.Tests
 
 			Assert(clay1._contacts.Count == 3, "Missing connections, supposed to have 3 connections");
 
-			
-
 			clay1.Disconnect(clay1, "P1");
 
 			Assert(clay1._contacts["P1"] == clay3, "clay3 should not be disconnected");
 			Assert(clay1._contacts["P1"] == clay3, "clay3 should not be disconnected");
 			Assert(clay1._contacts["P3"] == clay2, "clay2 should not be disconnected");
 
-			clay1.Disconnect(clay1, "P3");
+			clay1.Disconnect(clay2, "P3");
 			Assert(clay1._contacts["P1"] == clay3, "clay3 should not be disconnected");
 			Assert(clay1._contacts["P1"] == clay3, "clay3 should not be disconnected");
 
