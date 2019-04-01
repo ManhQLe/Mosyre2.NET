@@ -53,7 +53,7 @@ namespace Mosyre2.Tests
 
 			Assert(!clay1._contacts.ContainsKey("P3"), "clay2 at P3 should be diconnected");
 
-
+			Assert(clay1._contacts.Count == 2, "Should have only 2 connections left");
 		}
 	}
 }

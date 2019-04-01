@@ -14,12 +14,12 @@ namespace Mosyre2.Tests
 			var bk = Console.ForegroundColor;
 			try
 			{
-				Console.WriteLine($"Starting {this.GetType()}...");
+				Console.Write($"Testing {this.GetType()}...");
 
 				Run(args);
 
 				Console.ForegroundColor = ConsoleColor.Green;
-				Console.WriteLine($"Test completed!");
+				Console.Write($"Passed!\n");
 				Console.ForegroundColor = bk;
 			}
 			catch (Exception ex) {

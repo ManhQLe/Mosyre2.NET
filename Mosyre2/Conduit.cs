@@ -12,13 +12,13 @@ namespace Mosyre2
 		
 		public bool Equals(Contact x, Contact y)
 		{
-			return x.Clay.Equals(y.Clay) && x.ConnectPoint.Equals(y.ConnectPoint);
+			return x.Clay == y.Clay && x.ConnectPoint == y.ConnectPoint;
 		}
 
 
 		public int GetHashCode(Contact obj)
 		{
-			return obj.GetHashCode();
+			return (obj.Clay.GetHashCode() ^ obj.ConnectPoint.GetHashCode()).GetHashCode();
 		}
 	}
 
@@ -33,7 +33,7 @@ namespace Mosyre2
 
 	public class Conduit : Clay
 	{
-		HashSet<Contact> _contacts = new HashSet<Contact>(new ContactComparer());
+		internal HashSet<Contact> _contacts = new HashSet<Contact>(new ContactComparer());
 
 		public Conduit() : this(new CAgreement())
 		{

@@ -50,6 +50,7 @@
     <Compile Include="RClay.cs" />
     <Compile Include="TClay.cs" />
     <Compile Include="Tests\MosyreTest.cs" />
+    <Compile Include="Tests\TestConduit.cs" />
     <Compile Include="Tests\TestRClay.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
