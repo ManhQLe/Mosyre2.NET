@@ -54,6 +54,18 @@ namespace Mosyre2.Tests
 			Assert(!clay1._contacts.ContainsKey("P3"), "clay2 at P3 should be diconnected");
 
 			Assert(clay1._contacts.Count == 2, "Should have only 2 connections left");
+
+
+			clay1.Remember("As Manh", "This");
+			clay1.Remember(1, "That");
+
+			Assert(clay1.Recall("This") == (object)"As Manh", "Should have value of 'As Manh'");
+			Assert((int)clay1.Recall("That") == 1, "Should remember value of 1");
+
+			clay1.Forget("this");
+			Assert(clay1.Recall("This") == (object)"As Manh", "Should not forget 'As Manh'");
+			clay1.Forget("That");
+			Assert(clay1.Recall("That") == null, "Should forget 1");
 		}
 	}
 }

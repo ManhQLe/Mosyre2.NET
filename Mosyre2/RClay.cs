@@ -20,6 +20,10 @@ namespace Mosyre2
 				}
 			}
 		}
+
+		public T GetSignal<T>(object cp) {
+			return (T)this[cp];
+		}
 	}
 
 	public delegate void RClayFx(RCore center, RClay clay, object cp);
@@ -53,6 +57,11 @@ namespace Mosyre2
 		public RClay(RAgreement agr) : base(agr)
 		{
 			_core = new RCore { myClay = this };
+		}
+
+
+		protected RCore Center {
+			get => _core;
 		}
 
 		protected List<object> SensorPoints
@@ -100,7 +109,7 @@ namespace Mosyre2
 		}
 
 		protected bool IsValidSensorPoint(object cp) {
-			return SensorPoints.Find(x => x == cp) == null;
+			return SensorPoints.Contains(cp);
 		}
 
 		protected bool IsAllSignalsReady() {

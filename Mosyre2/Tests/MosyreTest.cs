@@ -25,6 +25,7 @@ namespace Mosyre2.Tests
 			catch (Exception ex) {
 
 				Console.ForegroundColor = ConsoleColor.Red;
+				Console.Write("Failed!\n");
 				Console.WriteLine(ex);
 				Console.ForegroundColor = bk;
 			}

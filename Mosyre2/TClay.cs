@@ -25,6 +25,11 @@ namespace Mosyre2
 			return _mem.ContainsKey(symbol) ? _mem[symbol] : null;
 		}
 
+		internal protected virtual T Recall<T>(object symbol)
+		{
+			return (T)Recall(symbol);
+		}
+
 		internal protected virtual void Forget(object symbol) {
 			_mem.Remove(symbol);
 		}
