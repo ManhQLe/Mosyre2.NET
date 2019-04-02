@@ -26,9 +26,8 @@ namespace Mosyre2.Tests
 			var clay2 = new RClay(new RAgreement
 			{
 				SensorPoints = new List<object> { "IN" },
-				Response = (center, clay, cp) => {
+				Response = (center, clay, cp) => {					
 					data = center.GetSignal<int>("IN");
-					Console.WriteLine($"Received: {data}");
 					waiter.Set();
 				}
 			});

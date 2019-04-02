@@ -12,29 +12,47 @@ namespace Mosyre2.Tests
 
 		protected override void Run(string[] args)
 		{
-			AutoResetEvent waiter = new AutoResetEvent(false);
+			var waiter = new AutoResetEvent(false);
+
+			
 			int data = 0;
 			var clay1 = new Starter();
+			var clay2 = new Starter();
+			var clay3 = new Starter();
 
-			var clay2 = new RClay(new RAgreement
+			var clayx = new RClay(new RAgreement
 			{
-				SensorPoints = new List<object> { "IN" },
+				SensorPoints = new List<object> { "A","B","C" },
 				Response = (center, clay, cp) => {
-					data = center.GetSignal<int>("IN");
-					Console.WriteLine($"Received: {data}");
+					var A = center.GetSignal<int>("A");
+					var B = center.GetSignal<int>("B");
+					var C = center.GetSignal<int>("C");
+					data = A + B + C;
 					waiter.Set();
 				}
 			});
 
 			Conduit.CreateLink(new LinkDef[] {
 				new LinkDef(clay1,"OUT"),
-				new LinkDef(clay2,"IN")
+				new LinkDef(clayx,"A")
+			});
+			Conduit.CreateLink(new LinkDef[] {
+				new LinkDef(clay2,"OUT"),
+				new LinkDef(clayx,"B")
+			});
+			Conduit.CreateLink(new LinkDef[] {
+				new LinkDef(clay3,"OUT"),
+				new LinkDef(clayx,"C")
 			});
 
+
+
 			clay1.Test(1);
+			clay2.Test(2);
+			clay3.Test(3);
 
 			waiter.WaitOne();
-			Assert(data == 1, "Supposed to be 1");
+			Assert(data == 6, "Supposed to be 6");
 		}
 	}
 }
