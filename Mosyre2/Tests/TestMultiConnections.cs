@@ -24,6 +24,7 @@ namespace Mosyre2.Tests
 			{
 				SensorPoints = new List<object> { "A","B","C" },
 				Response = (center, clay, cp) => {
+					
 					var A = center.GetSignal<int>("A");
 					var B = center.GetSignal<int>("B");
 					var C = center.GetSignal<int>("C");

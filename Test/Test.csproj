@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D37FA6BD-35D0-4036-912C-115BF81BB238}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mosyre2</RootNamespace>
-    <AssemblyName>Mosyre2</AssemblyName>
+    <ProjectGuid>{8D1E0B46-6254-47AB-AA69-E8DE2A4671F5}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,21 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agreement.cs" />
-    <Compile Include="Clay.cs" />
-    <Compile Include="Conduit.cs" />
-    <Compile Include="Contact.cs" />
-    <Compile Include="LinkDef.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RClay.cs" />
-    <Compile Include="TClay.cs" />
-    <Compile Include="Tests\MosyreTest.cs" />
-    <Compile Include="Tests\Starter.cs" />
-    <Compile Include="Tests\TestConduit.cs" />
-    <Compile Include="Tests\TestConnection.cs" />
-    <Compile Include="Tests\TestMultiConnections.cs" />
-    <Compile Include="Tests\TestRClay.cs" />
-    <Compile Include="Tests\TestTwoLayerConnection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mosyre2\Mosyre2.csproj">
+      <Project>{d37fa6bd-35d0-4036-912c-115bf81bb238}</Project>
+      <Name>Mosyre2</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
