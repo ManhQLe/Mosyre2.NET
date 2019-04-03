@@ -49,7 +49,7 @@ namespace Mosyre2
 			if (withClay is Conduit)
 			{
 				var c = _contacts.FirstOrDefault(x => x.Clay == withClay);
-				if (c.Clay == withClay)
+				if (c != null)
 					return;
 			}
 

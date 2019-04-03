@@ -52,6 +52,7 @@
     <Compile Include="Tests\MosyreTest.cs" />
     <Compile Include="Tests\Starter.cs" />
     <Compile Include="Tests\TestConduit.cs" />
+    <Compile Include="Tests\TestConduitConnection.cs" />
     <Compile Include="Tests\TestConnection.cs" />
     <Compile Include="Tests\TestMultiConnections.cs" />
     <Compile Include="Tests\TestRClay.cs" />

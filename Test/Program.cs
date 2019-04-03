@@ -24,6 +24,9 @@ namespace Test
 
 			t = new TestTwoLayerConnection();
 			t.Start(args);
+
+			t = new TestConduitConnection();
+			t.Start(args);
 		}
 	}
 }
