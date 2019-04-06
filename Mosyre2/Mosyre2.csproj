@@ -57,6 +57,7 @@
     <Compile Include="Tests\TestConnection.cs" />
     <Compile Include="Tests\TestMultiConnections.cs" />
     <Compile Include="Tests\TestRClay.cs" />
+    <Compile Include="Tests\TestSClay.cs" />
     <Compile Include="Tests\TestTwoLayerConnection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

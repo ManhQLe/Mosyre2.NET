@@ -45,9 +45,9 @@ namespace Mosyre2.Tests
 
 			var con1 = Conduit.CreateLink(new LinkDef(clay1, "IN"), new LinkDef(clay2, "IN"));
 			var con2 = new Conduit();
-			con2.LinkWith(new LinkDef(start, "OUT"));
+			con2.Link(new LinkDef(start, "OUT"));
 
-			con1.LinkWith(new LinkDef(con2, "X"));
+			con1.Link(new LinkDef(con2, "X"));
 
 			Conduit.CreateLink(new LinkDef(clay1, "OUT"), new LinkDef(clay3, "A"));
 			Conduit.CreateLink(new LinkDef(clay2, "OUT"), new LinkDef(clay3, "B"));

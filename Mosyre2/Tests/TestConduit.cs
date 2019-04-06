@@ -19,13 +19,13 @@ namespace Mosyre2.Tests
 			var clay2 = new RClay();
 			var clay3 = new RClay();
 
-			c.LinkWith(new LinkDef[] {
+			c.Link(new LinkDef[] {
 				new LinkDef(clay1,"A"),
 				new LinkDef(clay2,"B"),
 				new LinkDef(clay3,"C")
 			});
 
-			c.LinkWith(new LinkDef[] {
+			c.Link(new LinkDef[] {
 				new LinkDef(clay1,"A")
 			});			
 
