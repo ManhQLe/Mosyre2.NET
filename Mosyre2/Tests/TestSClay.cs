@@ -47,20 +47,24 @@ namespace Mosyre2.Tests
 			var s1 = new Starter();
 			var s2 = new Starter();
 
-			Conduit.CreateLink(t1, "A",a1, "A");
-			Conduit.CreateLink(t2, "A", a1, "B");
+			Conduit.CreateLink(t1, "O",a1, "A");
+			Conduit.CreateLink(t2, "O", a1, "B");
+
 			float data = 0;
+
 			SClay sclay = new SClay(new SAgreement
 			{
 				LayoutMap = new Dictionary<object, object[]> {
-					{"A", new object[]{t1,"A" } },
-					{"B", new object[]{t2,"A" } },
+					{"X", new object[]{t1,"A" } },
+					{"Y", new object[]{t2,"A" } },
 					{"O", new object[]{a1,"O" } }
 				}
 			});
 
 			var vclay = new RClay(new RAgreement
 			{
+				SensorPoints = new List<object> { "IN" },
+
 				Response = (center, clay, sp) =>
 				{
 					data = center.GetSignal<float>("IN");
@@ -68,8 +72,8 @@ namespace Mosyre2.Tests
 				}
 			});
 
-			Conduit.CreateLink(sclay, "A", s1, "OUT");
-			Conduit.CreateLink(sclay, "B", s2, "OUT");
+			Conduit.CreateLink(sclay, "X", s1, "OUT");
+			Conduit.CreateLink(sclay, "Y", s2, "OUT");
 			Conduit.CreateLink(sclay, "O", vclay, "IN");
 
 			s1.Test(.4f);

@@ -49,6 +49,8 @@ namespace Mosyre2
 		private List<object> _collected = new List<object>();
 		long _one = 0;
 
+		object _locker = new object();
+
 		public RClay():this(new RAgreement()) {
 
 		}
@@ -110,13 +112,17 @@ namespace Mosyre2
 		}
 
 		protected bool IsAllSignalsReady() {
-			return SensorPoints.All(x => _collected.Contains(x));
+			return SensorPoints.Count == _collected.Count;
 		}
 
 		protected void SetSignal(object connectPoint, object signal) {
-			Remember(signal, connectPoint);
-			if (!_collected.Contains(connectPoint)) {
-				_collected.Add(connectPoint);
+			lock (_locker)
+			{
+				Remember(signal, connectPoint);
+				if (!_collected.Contains(connectPoint))
+				{
+					_collected.Add(connectPoint);
+				}
 			}
 		}
 	}

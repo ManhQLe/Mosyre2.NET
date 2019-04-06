@@ -42,7 +42,7 @@ namespace Mosyre2
 			{
 				agr._links[atConnectPoint].Link(new LinkDef(withClay, atConnectPoint));
 				base.Connect(withClay, atConnectPoint);
-			}			
+			}
 		}
 
 		virtual protected Dictionary<object, object[]> OnBuild() {
