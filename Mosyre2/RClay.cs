@@ -47,8 +47,7 @@ namespace Mosyre2
 	{
 		internal Dictionary<object,Clay> _contacts = new Dictionary<object,Clay>();
 		private List<object> _collected = new List<object>();
-		int _one = 0;
-		RCore _core;
+		long _one = 0;
 
 		public RClay():this(new RAgreement()) {
 
@@ -56,13 +55,11 @@ namespace Mosyre2
 
 		public RClay(RAgreement agr) : base(agr)
 		{
-			_core = new RCore { myClay = this };
+			Center = new RCore { myClay = this };
 		}
 
 
-		protected RCore Center {
-			get => _core;
-		}
+		protected RCore Center { get; }
 
 		protected List<object> SensorPoints
 		{
@@ -101,7 +98,7 @@ namespace Mosyre2
 		}
 
 		protected virtual void OnResponse(object cp) {
-			(Agreement as RAgreement).Response(_core, this, cp);
+			(Agreement as RAgreement).Response(Center, this, cp);
 		}
 
 		protected virtual void OnInit() {
