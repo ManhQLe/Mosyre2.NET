@@ -27,6 +27,9 @@ namespace Test
 
 			t = new TestConduitConnection();
 			t.Start(args);
+
+			t = new TestSClay();
+			t.Start(args);
 		}
 	}
 }

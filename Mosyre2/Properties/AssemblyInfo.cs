@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Mosyre2")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Mosyre2.NET Programmable Flow Library")]
+[assembly: AssemblyDescription("Flow programming library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Le")]
 [assembly: AssemblyProduct("Mosyre2")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright ©  2019 Manh Le")]
+[assembly: AssemblyTrademark("MOSYRE")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
