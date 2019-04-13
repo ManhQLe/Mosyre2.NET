@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FE6471C3-4520-4A40-82DE-51CDA9A17EFE}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.txt = LICENSE.txt
+		Mosyre2\MosyreLogo.png = Mosyre2\MosyreLogo.png
 		README.md = README.md
 	EndProjectSection
 EndProject

@@ -65,7 +65,6 @@
     <None Include=".nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MosyreLogo.png" />
     <Content Include="nuget.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
