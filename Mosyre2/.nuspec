@@ -6,9 +6,9 @@
     <title>Mosyre2.NET Programmable Flow Library</title>
     <authors>Manh Le</authors>
     <owners>Manh Le</owners>
-    <licenseUrl>https://github.com/ManhQLe/Mosyre2.NET/blob/master/LICENSE.txt</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/ManhQLe/Mosyre2.NET</projectUrl>
-    <iconUrl></iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/ManhQLe/Mosyre2.NET/master/MosyreLogo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Barebone framework to construct flowable program.</description>
     <releaseNotes>First version of MOSYRE</releaseNotes>
