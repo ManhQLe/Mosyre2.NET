@@ -89,6 +89,10 @@ namespace Mosyre2
 			}
 		}
 
+		public void Link(params object[] def) {
+			Link(CreateLinkDef(def));
+		}
+
 		public static Conduit CreateLink(params LinkDef[] def) {
 			var c = new Conduit();
 			c.Link(def);
@@ -96,20 +100,25 @@ namespace Mosyre2
 		}
 
 		public static Conduit CreateLink(params object[] def) {
-			var c = new Conduit();
+			return CreateLink(CreateLinkDef(def));
+		}
+
+		private static LinkDef[] CreateLinkDef(params object[] def) {
 			if ((def.Length & 1) != 0)
 				throw new Exception("Invalid definition");
 
+			var a = new LinkDef[def.Length >> 1];
 			for (int i = 0; i < def.Length; i += 2)
 			{
 				if (def[i] is Clay)
 				{
-					c.Link(new LinkDef((Clay)def[i], def[i + 1]));
+					a[i >> 1] = new LinkDef((Clay)def[i], def[i + 1]);
 				}
 				else
 					throw new Exception("Invalid definition");
 			}
-			return c;
+
+			return a;
 		}
 	}
 }

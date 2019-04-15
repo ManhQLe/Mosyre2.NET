@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
 
 namespace Mosyre2.Tests
 {
 	public class TestSClay : MosyreTest
 	{
-		class Add2Number : RClay {
-			public Add2Number() {
+		class Add2Number : RClay
+		{
+			public Add2Number()
+			{
 				var agr = Agreement as RAgreement;
 				agr.SensorPoints = new List<object> { "A", "B" };
 			}
@@ -20,11 +19,12 @@ namespace Mosyre2.Tests
 			}
 		}
 
-		class Times2Number : RClay {
+		class Times2Number : RClay
+		{
 			public Times2Number()
 			{
 				var agr = Agreement as RAgreement;
-				agr.SensorPoints = new List<object> { "A"};
+				agr.SensorPoints = new List<object> { "A" };
 			}
 
 			protected override void OnResponse(object cp)
@@ -42,12 +42,12 @@ namespace Mosyre2.Tests
 			var waiter = new AutoResetEvent(false);
 			var a1 = new Add2Number();
 			var t1 = new Times2Number();
-			var t2 = new Times2Number();			
+			var t2 = new Times2Number();
 
 			var s1 = new Starter();
 			var s2 = new Starter();
 
-			Conduit.CreateLink(t1, "O",a1, "A");
+			Conduit.CreateLink(t1, "O", a1, "A");
 			Conduit.CreateLink(t2, "O", a1, "B");
 
 			float data = 0;
