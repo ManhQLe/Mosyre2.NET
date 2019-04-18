@@ -85,16 +85,20 @@ namespace Mosyre2
 		{
 			if (++_one == 1)
 				OnInit();
+			lock (_locker)
+			{
+				if (_contacts.ContainsKey(atConnectPoint) &&
+				_contacts[atConnectPoint] == fromClay && IsValidSensorPoint(atConnectPoint))
+				{
 
-			if (_contacts.ContainsKey(atConnectPoint) && 
-				_contacts[atConnectPoint] == fromClay && IsValidSensorPoint(atConnectPoint)) {
-			
-				SetSignal(atConnectPoint, signal);
-				if (IsAllSignalsReady()) {
-					if ((Agreement as RAgreement).IsStaged)
-						_collected.Clear();
+					SetSignal(atConnectPoint, signal);
+					if (IsAllSignalsReady())
+					{
+						if ((Agreement as RAgreement).IsStaged)
+							_collected.Clear();
 
-					OnResponse(atConnectPoint);
+						OnResponse(atConnectPoint);
+					}
 				}
 			}
 		}
@@ -115,17 +119,13 @@ namespace Mosyre2
 			return SensorPoints.Count == _collected.Count;
 		}
 
-		protected void SetSignal(object connectPoint, object signal) {
-			lock (_locker)
+		protected void SetSignal(object connectPoint, object signal)
+		{
+			Remember(signal, connectPoint);
+			if (!_collected.Contains(connectPoint))
 			{
-				Remember(signal, connectPoint);
-				if (!_collected.Contains(connectPoint))
-				{
-					_collected.Add(connectPoint);
-				}
+				_collected.Add(connectPoint);
 			}
 		}
 	}
-
-	
 }

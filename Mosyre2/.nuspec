@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>    
     <id>mosyre2.net</id>
-    <version>1.0.1.0</version>
+    <version>1.0.1.1</version>
     <title>Mosyre2.NET Programmable Flow Library</title>
     <authors>Manh Le</authors>
     <owners>Manh Le</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/ManhQLe/Mosyre2.NET/master/MosyreLogo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Barebone framework to construct flowable program.</description>
-    <releaseNotes>First version of MOSYRE</releaseNotes>
+    <releaseNotes>MOSYRE2 b1</releaseNotes>
     <copyright>Copyright @2019 Manh Le</copyright>
     <tags>Flow programming</tags>
   </metadata>

@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".nuspec" />
+    <None Include="push.cmd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="nuget.exe" />
