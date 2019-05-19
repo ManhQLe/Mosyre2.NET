@@ -9,12 +9,12 @@ namespace Mosyre2
 {
 	internal class ContactComparer : IEqualityComparer<Contact>
 	{
-		
+
 		public bool Equals(Contact x, Contact y)
 		{
-			return x.Clay == y.Clay && x.ConnectPoint == y.ConnectPoint;
+			return x.Clay == y.Clay && x.ConnectPoint.Equals(y.ConnectPoint);
 		}
-
+		
 
 		public int GetHashCode(Contact obj)
 		{
@@ -63,11 +63,12 @@ namespace Mosyre2
 
 		protected override void OnSignal(Clay fromClay, object atConnectPoint, object signal)
 		{
-			var valid = _contacts.Contains(new Contact(fromClay, atConnectPoint));
+			var valid = _contacts.Contains( new Contact(fromClay, atConnectPoint));
+			
 			if (valid)
 				foreach (var c in _contacts)
 				{
-					if (c.ConnectPoint != atConnectPoint || c.Clay != fromClay)
+					if (!c.ConnectPoint.Equals(atConnectPoint) || c.Clay != fromClay)
 					{
 						if ((Agreement as CAgreement).ParallelTrx)
 						{
